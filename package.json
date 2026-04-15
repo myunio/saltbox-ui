@@ -21,6 +21,7 @@
     "src"
   ],
   "scripts": {
+    "prepare": "pnpm run build",
     "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --project tsconfig.build.json",
     "dev": "vite build --watch",
     "check": "oxlint src && vue-tsc --noEmit && oxfmt --check src",
