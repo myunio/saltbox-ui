@@ -1,7 +1,7 @@
 {
   "name": "@myunio/saltbox-ui",
   "version": "0.1.0",
-  "description": "Saltbox UI — Composable Vue component library inspired by Quasar, built with Tailwind CSS",
+  "description": "Saltbox UI — a composable UI component library",
   "type": "module",
   "license": "MIT",
   "repository": {
