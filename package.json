@@ -11,6 +11,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "style": "./src/style.css",
       "import": "./dist/saltbox.js"
     }
   },
