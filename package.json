@@ -1,5 +1,5 @@
 {
-  "name": "@myunio/saltbox-ui",
+  "name": "@unio/saltbox-ui",
   "version": "0.1.0",
   "description": "Saltbox UI — a composable UI component library",
   "type": "module",

@@ -17,7 +17,7 @@ A composable UI component library for Vue 3 applications. Small, focused primiti
 ## Install
 
 ```bash
-pnpm add @myunio/saltbox-ui
+pnpm add @unio/saltbox-ui
 ```
 
 Peer dependencies: `vue >=3.5`, `@nuxt/ui >=4.0`, `tailwindcss >=4.0`
@@ -26,7 +26,7 @@ Peer dependencies: `vue >=3.5`, `@nuxt/ui >=4.0`, `tailwindcss >=4.0`
 
 ```vue
 <script setup lang="ts">
-import { SbList, SbListItem, SbListSection, SbListLabel } from "@myunio/saltbox-ui"
+import { SbList, SbListItem, SbListSection, SbListLabel } from "@unio/saltbox-ui"
 </script>
 
 <template>
@@ -46,7 +46,7 @@ import { SbList, SbListItem, SbListSection, SbListLabel } from "@myunio/saltbox-
 Components that navigate (`SbRouteTab`, `SbFab`, `SbFabAction`) use a pluggable navigator. Provide your router adapter at the app root:
 
 ```ts
-import { SB_NAVIGATOR_KEY } from "@myunio/saltbox-ui"
+import { SB_NAVIGATOR_KEY } from "@unio/saltbox-ui"
 
 // Inertia.js
 provide(SB_NAVIGATOR_KEY, {
