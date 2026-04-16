@@ -32,6 +32,7 @@ export interface SbRouteTabProps {
 
 <script setup lang="ts">
 import { computed, inject, type Ref } from "vue"
+import UIcon from "@nuxt/ui/components/Icon.vue"
 
 import { useSbNavigator } from "./navigator"
 
