@@ -11,7 +11,7 @@ export default defineConfig({
       fileName: "saltbox",
     },
     rollupOptions: {
-      external: ["vue", "@nuxt/ui"],
+      external: ["vue", /^@nuxt\/ui/],
     },
   },
 })
