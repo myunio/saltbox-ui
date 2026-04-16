@@ -12,7 +12,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "style": "./src/style.css",
-      "import": "./dist/saltbox.js"
+      "import": "./src/index.ts"
     }
   },
   "types": "./dist/index.d.ts",
