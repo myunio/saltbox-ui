@@ -26,7 +26,6 @@ export interface SbLoadMoreProps {
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, watch } from "vue"
-import UButton from "@nuxt/ui/components/Button.vue"
 
 const props = withDefaults(defineProps<SbLoadMoreProps>(), {
   loading: false,

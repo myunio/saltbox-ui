@@ -57,7 +57,6 @@ export interface SbFabProps {
 
 <script setup lang="ts">
 import { computed, ref, provide, useSlots, watch } from "vue"
-import UIcon from "@nuxt/ui/components/Icon.vue"
 
 import { useSbNavigator } from "./navigator"
 

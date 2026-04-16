@@ -28,7 +28,6 @@ export interface SbTabProps {
 
 <script setup lang="ts">
 import { computed, inject, type Ref } from "vue"
-import UIcon from "@nuxt/ui/components/Icon.vue"
 
 const props = withDefaults(defineProps<SbTabProps>(), {
   disable: false,
