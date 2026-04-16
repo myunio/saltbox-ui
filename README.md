@@ -22,6 +22,35 @@ pnpm add @unio/saltbox-ui
 
 Peer dependencies: `vue >=3.5`, `@nuxt/ui >=4.0`, `tailwindcss >=4.0`
 
+## Setup
+
+Saltbox ships raw `.vue` source files that are compiled by your app's Vite pipeline. Two things to configure:
+
+**1. Nuxt UI Vite plugin** — add `scanPackages` so Saltbox components get auto-import resolution for Nuxt UI components (`UIcon`, `UButton`, etc.):
+
+```ts
+// vite.config.ts
+import ui from "@nuxt/ui/vite"
+
+export default defineConfig({
+  plugins: [
+    ui({
+      scanPackages: ["@unio/saltbox-ui"],
+      // ...your other options
+    }),
+  ],
+})
+```
+
+**2. CSS** — import Saltbox's styles so Tailwind scans its source files for utility classes:
+
+```css
+/* application.css */
+@import "tailwindcss";
+@import "@nuxt/ui";
+@import "@unio/saltbox-ui";
+```
+
 ## Usage
 
 ```vue
