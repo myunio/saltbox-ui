@@ -31,6 +31,7 @@ export interface SbStatCardProps {
 </script>
 
 <script setup lang="ts">
+import UIcon from "@nuxt/ui/components/Icon.vue"
 import { computed } from "vue"
 
 const props = withDefaults(defineProps<SbStatCardProps>(), {
