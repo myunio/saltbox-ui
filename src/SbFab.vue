@@ -52,6 +52,8 @@ export interface SbFabProps {
   disable?: boolean
   /** Control the open/closed state of the speed-dial (two-way binding via `v-model`). */
   modelValue?: boolean
+  /** Accessible name forwarded to the trigger button. Required when only an icon is shown. */
+  ariaLabel?: string
 }
 </script>
 
@@ -201,6 +203,7 @@ function onClick(e: MouseEvent) {
       :href="!hasActions && to ? to : undefined"
       :class="triggerClasses"
       :disabled="disable || undefined"
+      :aria-label="ariaLabel"
       :aria-expanded="hasActions ? isOpen : undefined"
       :aria-haspopup="hasActions ? 'true' : undefined"
       @click="onClick"
