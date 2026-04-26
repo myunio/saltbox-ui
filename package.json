@@ -20,6 +20,12 @@
     "dist",
     "src"
   ],
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "vue-demi"
+    ]
+  },
   "scripts": {
     "prepare": "pnpm run build",
     "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --project tsconfig.build.json",
