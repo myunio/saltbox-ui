@@ -55,7 +55,7 @@ const tag = computed(() => props.as)
 const classes = computed(() => [
   "sb-list",
   "group/list",
-  props.bordered && "border border-default rounded-lg",
+  props.bordered && "border border-default rounded-lg overflow-hidden",
   props.separator && "divide-y divide-default",
   props.padding && "py-2",
 ])
