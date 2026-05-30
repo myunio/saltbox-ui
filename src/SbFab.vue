@@ -7,6 +7,9 @@
  * are provided, clicking the FAB toggles a speed-dial menu that fans out in
  * the specified `direction`.
  *
+ * Navigation (when `to` is set) is delegated to Nuxt UI's `ULink`, so it works
+ * with whatever router mode the host app configures.
+ *
  * Supports round or square shapes, three sizes, pill shape with label,
  * and icon swapping between open/closed states.
  *
@@ -60,8 +63,6 @@ export interface SbFabProps {
 <script setup lang="ts">
 import { computed, ref, provide, useSlots, watch } from "vue"
 
-import { useSbNavigator } from "./navigator"
-
 const props = withDefaults(defineProps<SbFabProps>(), {
   activeIcon: "i-lucide-x",
   hideIcon: false,
@@ -80,7 +81,6 @@ const emit = defineEmits<{
   click: [event: MouseEvent]
 }>()
 
-const { navigate } = useSbNavigator()
 const slots = useSlots()
 const hasActions = computed(() => !!slots.default)
 
@@ -185,9 +185,6 @@ function onClick(e: MouseEvent) {
 
   if (hasActions.value) {
     setOpen(!isOpen.value)
-  } else if (props.to) {
-    e.preventDefault()
-    navigate(props.to)
   }
 }
 </script>
@@ -198,11 +195,11 @@ function onClick(e: MouseEvent) {
       <slot />
     </div>
 
-    <component
-      :is="!hasActions && to ? 'a' : 'button'"
-      :href="!hasActions && to ? to : undefined"
+    <ULink
+      :to="!hasActions ? to : undefined"
+      raw
       :class="triggerClasses"
-      :disabled="disable || undefined"
+      :disabled="disable"
       :aria-label="ariaLabel"
       :aria-expanded="hasActions ? isOpen : undefined"
       :aria-haspopup="hasActions ? 'true' : undefined"
@@ -218,6 +215,6 @@ function onClick(e: MouseEvent) {
         ]"
       />
       <span v-if="label && !hideLabel" class="font-medium">{{ label }}</span>
-    </component>
+    </ULink>
   </div>
 </template>

@@ -3,8 +3,9 @@
  * Route-aware tab within a `SbTabs` container, inspired by Quasar's `QRouteTab`.
  *
  * Like `SbTab` but navigates to a URL on click and determines its active state
- * from the current Inertia page URL. Renders as an `<a>` tag for accessibility
- * and progressive enhancement.
+ * from the current route. Delegates navigation and active-state detection to
+ * Nuxt UI's `ULink`, so it works with whatever router mode the host app
+ * configures (Inertia, Vue Router, or none) with no extra wiring.
  *
  * @example
  * ```vue
@@ -33,8 +34,6 @@ export interface SbRouteTabProps {
 <script setup lang="ts">
 import { computed, inject, type Ref } from "vue"
 
-import { useSbNavigator } from "./navigator"
-
 const props = withDefaults(defineProps<SbRouteTabProps>(), {
   exact: false,
   disable: false,
@@ -49,17 +48,7 @@ const tabs = inject<{
   select: (name: string) => void
 } | null>("sb-tabs", null)
 
-const { navigate, currentUrl } = useSbNavigator()
-
-const isActive = computed(() => {
-  const url = currentUrl.value
-  if (props.exact) {
-    return url === props.to || url === props.to + "/"
-  }
-  return url.startsWith(props.to)
-})
-
-const classes = computed(() => [
+const baseClasses = computed(() => [
   "sb-tab sb-route-tab",
   "flex flex-col items-center justify-center gap-1",
   "flex-1 min-w-0",
@@ -67,35 +56,38 @@ const classes = computed(() => [
   "text-xs font-medium transition-colors",
   props.disable && "opacity-50 pointer-events-none",
   !props.disable && "cursor-pointer",
-  isActive.value ? tabs?.activeColor.value || "text-primary" : "text-muted hover:text-highlighted",
 ])
 
-function onClick(e: MouseEvent) {
-  e.preventDefault()
+const activeClass = computed(() => tabs?.activeColor.value || "text-primary")
+
+function onClick() {
   if (props.disable) return
   tabs?.select(props.name)
-  navigate(props.to)
 }
 </script>
 
 <template>
-  <a
-    :href="to"
-    :class="classes"
+  <ULink
+    :to="to"
+    :exact="exact"
+    raw
+    :class="baseClasses"
+    :active-class="activeClass"
+    inactive-class="text-muted hover:text-highlighted"
+    :disabled="disable"
     role="tab"
-    :aria-selected="isActive"
-    :aria-disabled="disable || undefined"
-    :tabindex="disable ? -1 : 0"
     @click="onClick"
   >
-    <UIcon v-if="icon" :name="icon" class="size-5" />
-    <span v-if="label">{{ label }}</span>
-    <slot />
+    <template #default="{ active }">
+      <UIcon v-if="icon" :name="icon" class="size-5" />
+      <span v-if="label">{{ label }}</span>
+      <slot />
 
-    <span
-      v-if="tabs?.indicator.value && isActive"
-      class="absolute right-1/4 bottom-0 left-1/4 h-0.5 rounded-full"
-      :class="tabs?.indicatorColor || 'bg-primary'"
-    />
-  </a>
+      <span
+        v-if="tabs?.indicator.value && active"
+        class="absolute right-1/4 bottom-0 left-1/4 h-0.5 rounded-full"
+        :class="tabs?.indicatorColor || 'bg-primary'"
+      />
+    </template>
+  </ULink>
 </template>

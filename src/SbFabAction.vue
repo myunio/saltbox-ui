@@ -6,6 +6,9 @@
  * is open. Clicking an action navigates to `to` (if set), emits `click`,
  * and closes the parent speed-dial.
  *
+ * Navigation (when `to` is set) is delegated to Nuxt UI's `ULink`, so it works
+ * with whatever router mode the host app configures.
+ *
  * @example
  * ```vue
  * <SbFab icon="i-lucide-plus" direction="up">
@@ -21,7 +24,7 @@ export interface SbFabActionProps {
   label?: string
   /** Position of the label relative to the icon. @defaultValue `"left"` */
   labelPosition?: "top" | "right" | "bottom" | "left"
-  /** Navigation URL. Navigates on click via Inertia router. */
+  /** Navigation URL. Navigates on click via the host app's router. */
   to?: string
   /** Background color as a Tailwind class. @defaultValue `"bg-primary-50"` */
   color?: string
@@ -35,8 +38,6 @@ export interface SbFabActionProps {
 <script setup lang="ts">
 import { computed, inject, type Ref } from "vue"
 
-import { useSbNavigator } from "./navigator"
-
 const props = withDefaults(defineProps<SbFabActionProps>(), {
   labelPosition: "left",
   color: "bg-primary-50",
@@ -47,8 +48,6 @@ const props = withDefaults(defineProps<SbFabActionProps>(), {
 const emit = defineEmits<{
   click: [event: MouseEvent]
 }>()
-
-const { navigate } = useSbNavigator()
 
 const fab = inject<{
   isOpen: Ref<boolean>
@@ -79,19 +78,15 @@ function onClick(e: MouseEvent) {
   if (props.disable) return
   emit("click", e)
   fab?.onChildClick(e)
-  if (props.to) {
-    e.preventDefault()
-    navigate(props.to)
-  }
 }
 </script>
 
 <template>
-  <component
-    :is="to ? 'a' : 'button'"
-    :href="to"
+  <ULink
+    :to="to"
+    raw
     :class="classes"
-    :disabled="disable || undefined"
+    :disabled="disable"
     role="menuitem"
     @click="onClick"
   >
@@ -102,5 +97,5 @@ function onClick(e: MouseEvent) {
       :class="color === 'bg-primary-50' ? 'text-primary' : 'text-white'"
     />
     <span v-if="label" :class="labelClasses">{{ label }}</span>
-  </component>
+  </ULink>
 </template>

@@ -33,7 +33,7 @@
     "check": "oxlint src && vue-tsc --noEmit && oxfmt --check src",
     "lint": "oxlint src",
     "lint:fix": "oxlint --fix src",
-    "fmt": "oxfmt --write src",
+    "fmt": "oxfmt src",
     "fmt:check": "oxfmt --check src",
     "typecheck": "vue-tsc --noEmit"
   },
