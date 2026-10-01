@@ -19,7 +19,7 @@ defineProps<{ items: SbViewChoice[]; label: string }>();
       :ui="{ list: 'flex-wrap', trigger: 'min-h-(--app-target) whitespace-normal data-[state=active]:text-highlighted', label: 'whitespace-normal', indicator: 'bg-default shadow-sm' }">
       <template #default="{ item }">
         <span>{{ item.label }}</span>
-        <span v-if="item.count !== undefined" class="text-muted ms-2 tabular-nums">{{ item.count }}</span>
+        <span v-if="item.count !== undefined" class="text-muted ms-2 tabular-nums">{{ ` ${item.count}` }}</span>
       </template>
     </UTabs>
   </div>
