@@ -16,7 +16,7 @@ defineProps<{ items: SbViewChoice[]; label: string }>();
 <template>
   <div role="group" :aria-label="label" class="min-w-0">
     <UTabs v-model="value" :items="items" :content="false" size="md" color="neutral"
-      :ui="{ list: 'flex-wrap', trigger: 'min-h-(--app-target) whitespace-normal', label: 'whitespace-normal', indicator: 'bg-default shadow-sm' }">
+      :ui="{ list: 'flex-wrap', trigger: 'min-h-(--app-target) whitespace-normal data-[state=active]:text-highlighted', label: 'whitespace-normal', indicator: 'bg-default shadow-sm' }">
       <template #default="{ item }">
         <span>{{ item.label }}</span>
         <span v-if="item.count !== undefined" class="text-muted ms-2 tabular-nums">{{ item.count }}</span>
