@@ -95,3 +95,15 @@ If no provider is given, navigation falls back to `window.location`.
 ## License
 
 MIT
+
+## Views and leading figures
+
+`SbViewSwitch` wraps Nuxt UI tabs without panels for a same-page view choice.
+Pass `items` (`label`, `value`, optional `count` and `disabled`), a group `label`,
+and `v-model`. The host handles URL navigation on update. Counts are quiet
+numbers; Nuxt UI retains keyboard and selected-state behavior.
+
+`SbFigure` takes `label`, a preformatted `value`, optional `description` and
+`ui` classes for the three text roles. It does no money or locale conversion.
+Compose figures inside `SbFigureRow`: one column on phones, two from `sm`,
+four from `lg`. It is unboxed; `SbStatCard` remains for centered card metrics.

@@ -42,3 +42,8 @@ export { default as SbDetailRow } from "./SbDetailRow.vue";
 // Toolbars & Controls
 export { default as SbResultsBar } from "./SbResultsBar.vue";
 export { default as SbLoadMore } from "./SbLoadMore.vue";
+
+export { default as SbViewSwitch } from "./SbViewSwitch.vue";
+export type { SbViewChoice } from "./SbViewSwitch.vue";
+export { default as SbFigure } from "./SbFigure.vue";
+export { default as SbFigureRow } from "./SbFigureRow.vue";
