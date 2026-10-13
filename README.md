@@ -106,4 +106,4 @@ numbers; Nuxt UI retains keyboard and selected-state behavior.
 `SbFigure` takes `label`, a preformatted `value`, optional `description` and
 `ui` classes for the three text roles. It does no money or locale conversion.
 Compose figures inside `SbFigureRow`: one column on phones, two from `sm`,
-four from `lg`. It is unboxed; `SbStatCard` remains for centered card metrics.
+four from `lg`; exactly three figures take three columns from `sm`. It is unboxed; `SbStatCard` remains for centered card metrics.
