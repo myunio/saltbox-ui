@@ -52,4 +52,3 @@ export { default as SbFigureRow } from "./SbFigureRow.vue";
 // Notifications
 export { default as SbNotificationBell } from "./SbNotificationBell.vue";
 export { default as SbNotificationCount } from "./SbNotificationCount.vue";
-export { notificationCountLabel } from "./notificationCount";
