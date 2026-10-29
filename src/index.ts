@@ -8,6 +8,7 @@
  * **Lists** — `SbList`, `SbListItem`, `SbListSection`, `SbListLabel`
  * **Tabs** — `SbTabs`, `SbTab`, `SbRouteTab`
  * **FAB** — `SbFab`, `SbFabAction`
+ * **Notifications** — `SbNotificationBell`, `SbNotificationCount`
  *
  * @packageDocumentation
  */
@@ -47,3 +48,7 @@ export { default as SbViewSwitch } from "./SbViewSwitch.vue";
 export type { SbViewChoice } from "./SbViewSwitch.vue";
 export { default as SbFigure } from "./SbFigure.vue";
 export { default as SbFigureRow } from "./SbFigureRow.vue";
+
+// Notifications
+export { default as SbNotificationBell } from "./SbNotificationBell.vue";
+export { default as SbNotificationCount } from "./SbNotificationCount.vue";

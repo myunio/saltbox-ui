@@ -10,6 +10,8 @@ A composable UI component library for Vue 3 applications. Small, focused primiti
 
 **FAB** — `SbFab`, `SbFabAction`
 
+**Notifications** — `SbNotificationBell` (top-bar bell, red dot while unread), `SbNotificationCount` (unread count for the panel header). The host app keeps its data and panel.
+
 **Data Display** — `SbProgressBar`, `SbStatCard`, `SbSectionHeader`
 
 **Controls** — `SbResultsBar`, `SbLoadMore`
@@ -107,3 +109,16 @@ numbers; Nuxt UI retains keyboard and selected-state behavior.
 `ui` classes for the three text roles. It does no money or locale conversion.
 Compose figures inside `SbFigureRow`: one column on phones, two from `sm`,
 four from `lg`. Pass `columns="3"` for three columns from `sm`. It is unboxed; `SbStatCard` remains for centered card metrics.
+
+## Notifications
+
+`SbNotificationBell` is the top-bar bell: a ghost icon button with a small red
+dot while `count` is above zero, and no number on the bar. Its accessible name
+adds the count ("Notifications, 3 unread"). Optional `label`, `countLabel`,
+`tooltip` and `icon` take the host's own (translated) text and icon set.
+
+`SbNotificationCount` shows the unread count beside the title of the panel the
+bell opens ("3 unread", capped at "99+") and renders nothing at zero.
+
+Each app keeps its own data and panel: put the bell in a `UPopover` trigger, or
+open a `USlideover` from its `click`.
