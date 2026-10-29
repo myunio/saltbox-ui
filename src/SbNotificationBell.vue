@@ -15,9 +15,6 @@
  * </UPopover>
  * ```
  */
-import UButton from "@nuxt/ui/components/Button.vue";
-import UChip from "@nuxt/ui/components/Chip.vue";
-import UTooltip from "@nuxt/ui/components/Tooltip.vue";
 import { computed } from "vue";
 
 import { notificationCountLabel } from "./notificationCount";

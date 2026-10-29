@@ -8,7 +8,6 @@ export interface SbViewChoice {
 </script>
 
 <script setup lang="ts">
-import UTabs from "@nuxt/ui/components/Tabs.vue";
 const value = defineModel<string>({ required: true });
 defineProps<{ items: SbViewChoice[]; label: string }>();
 </script>

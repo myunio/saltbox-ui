@@ -9,7 +9,6 @@
  * <SbNotificationCount :count="unreadCount" />
  * ```
  */
-import UBadge from "@nuxt/ui/components/Badge.vue";
 
 import { notificationCountLabel } from "./notificationCount";
 
